@@ -1,16 +1,7 @@
-<div class="project-card-container" *ngFor="let project of projects">
-  <mat-expansion-panel class="project-card">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{project.name}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{project.descriptions}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <app-tasks-preview-list [tasks]="projectsService.getTasksInProject(project, tasks)"></app-tasks-preview-list>
-
-  </mat-expansion-panel>
+<div class="project-card-container">
+  <div *ngFor="let project of projects">
+    <app-project-card [project]="project"
+                      [tasks]="projectsService.getTasksInProject(project, tasks)">
+    </app-project-card>
+  </div>
 </div>
-

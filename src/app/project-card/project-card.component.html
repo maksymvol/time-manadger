@@ -1,0 +1,10 @@
+<mat-card>
+  <div class="card-header">
+    <h2>{{project.name}}</h2>
+  </div>
+  <div>
+    <p>{{project.descriptions}}</p>
+  </div>
+
+  <app-tasks-preview-list [tasks]="tasks"></app-tasks-preview-list>
+</mat-card>
