@@ -8,9 +8,12 @@ import {ProjectsListComponent} from './projects-list/projects-list.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ServerService} from './server.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TasksPreviewListComponent} from './tasks-preview-list/tasks-preview-list.component';
+
 import {MatExpansionModule} from '@angular/material/expansion';
-import { TasksPreviewListComponent } from './tasks-preview-list/tasks-preview-list.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { TasksPreviewListComponent } from './tasks-preview-list/tasks-preview-li
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+
+    MatExpansionModule,
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [
     ServerService,
