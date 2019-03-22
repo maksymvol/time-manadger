@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.project-info-container {
+  flex: 3;
+  min-width: 100px;
+}
+
+.tasks-container {
+  flex: 4;
+  min-width: 150px;
+  padding-left: 16px;
+}

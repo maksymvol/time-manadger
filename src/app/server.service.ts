@@ -14,15 +14,19 @@ export class ServerService {
   constructor(private http: HttpClient) {
   }
 
-  getProjects(): Observable<Project> {
-    return this.http.get<Project>(this.ROOT_URL + '/projects');
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.ROOT_URL + '/projects');
   }
 
-  getTasks(): Observable<Task> {
-    return this.http.get<Task>(this.ROOT_URL + '/tasks');
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.ROOT_URL + '/tasks');
   }
 
   getProjectByName(name: string): Observable<Project> {
     return this.http.get<Project>(this.ROOT_URL + '/projects/' + name);
+  }
+
+  getTasksInCurrentProject(name): Observable<Task[]> {
+    return this.http.get<Task[]>(this.ROOT_URL + '/projects/' + name + '/tasks');
   }
 }

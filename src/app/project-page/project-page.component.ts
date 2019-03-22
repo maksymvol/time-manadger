@@ -19,7 +19,7 @@ export class ProjectPageComponent implements OnInit {
   ngOnInit() {
     const name = this.projectsService.getCurrentProjectName();
     this.projectsService.getCurrentProject(name).subscribe(res => this.project = res);
-    this.projectsService.getTasks().subscribe(res => this.tasks = res);
+    this.projectsService.getTasksInCurrentProject(name).subscribe(res => this.tasks = res);
   }
 
 }

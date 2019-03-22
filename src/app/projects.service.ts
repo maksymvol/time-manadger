@@ -36,4 +36,8 @@ export class ProjectsService {
   getCurrentProject(name: string) {
     return this.serverService.getProjectByName(name);
   }
+
+  getTasksInCurrentProject(name: string) {
+    return this.serverService.getTasksInCurrentProject(name);
+  }
 }

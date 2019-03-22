@@ -1,0 +1,4 @@
+<div *ngFor="let task of tasks; last as last;">
+  <p>{{task.name}}</p>
+  <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+</div>
