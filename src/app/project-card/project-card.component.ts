@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-project-card',
@@ -9,6 +9,7 @@ export class ProjectCardComponent implements OnInit {
 
   @Input() project;
   @Input() tasks;
+  @Output() handleCardClicked = new EventEmitter();
 
   constructor() {
   }
@@ -16,4 +17,7 @@ export class ProjectCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  cardClicked() {
+    this.handleCardClicked.emit(this.project);
+  }
 }

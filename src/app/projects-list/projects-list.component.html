@@ -1,7 +1,9 @@
 <div class="project-card-container">
   <div *ngFor="let project of projects">
-    <app-project-card [project]="project"
-                      [tasks]="projectsService.getTasksInProject(project, tasks)">
+    <app-project-card
+      [project]="project"
+      [tasks]="projectsService.getTasksInProject(project, tasks)"
+      (handleCardClicked)="cardClicked($event)">
     </app-project-card>
   </div>
 </div>

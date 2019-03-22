@@ -22,4 +22,7 @@ export class ProjectsListComponent implements OnInit {
     this.projectsService.getTasks().subscribe(res => this.tasks = res);
   }
 
+  cardClicked(project: Project) {
+    this.projectsService.navigateTo('/projects/' + project.name);
+  }
 }

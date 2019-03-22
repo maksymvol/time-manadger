@@ -14,7 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ServerService} from './server.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TasksPreviewListComponent} from './tasks-preview-list/tasks-preview-list.component';
-import { ProjectCardComponent } from './project-card/project-card.component';
+import {ProjectCardComponent} from './project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,8 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
 
+    BrowserAnimationsModule,
     MatExpansionModule,
     MatCardModule,
     MatToolbarModule
