@@ -1,12 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Project} from './Project';
+import {ServerService} from './server.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
 
-  projects: Project[] = [];
+  constructor(private serverService: ServerService) {
+  }
 
-  constructor() {}
+  getProjects() {
+    return this.serverService.getProjects();
+  }
+
+  getTasks() {
+    return this.serverService.getTasks();
+  }
 }

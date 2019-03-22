@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Project} from './Project';
 import {Task} from './Task';
-import {delay} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class ServerService {
   }
 
   getProjects(): Observable<Project> {
-    return this.http.get<Project>(this.ROOT_URL + '/projects').pipe(delay(1000));
+    return this.http.get<Project>(this.ROOT_URL + '/projects');
   }
 
   getTasks(): Observable<Task> {

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServerService} from '../server.service';
-import {ActivatedRoute} from '@angular/router';
+import {ProjectsService} from '../projects.service';
 import {Project} from '../Project';
 
 @Component({
@@ -13,12 +12,11 @@ export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
 
   constructor(
-    private serverService: ServerService,
-    private route: ActivatedRoute,
+    private projectsService: ProjectsService
   ) {}
 
   ngOnInit() {
-    this.projects = this.route.snapshot.data.projects;
+    this.projectsService.getProjects().subscribe(res => this.projects = res);
   }
 
 }
