@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectsService} from '../projects.service';
 import {Project} from '../Project';
+import {Task} from '../Task';
 
 @Component({
   selector: 'app-projects-list',
@@ -10,6 +11,7 @@ import {Project} from '../Project';
 export class ProjectsListComponent implements OnInit {
 
   projects: Project[] = [];
+  tasks: Task[] = [];
 
   constructor(
     private projectsService: ProjectsService
@@ -17,6 +19,7 @@ export class ProjectsListComponent implements OnInit {
 
   ngOnInit() {
     this.projectsService.getProjects().subscribe(res => this.projects = res);
+    this.projectsService.getTasks().subscribe(res => this.tasks = res);
   }
 
 }

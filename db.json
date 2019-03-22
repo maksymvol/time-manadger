@@ -2,11 +2,13 @@
   "projects": [
     {
       "id": 1,
-      "name": "list1"
+      "name": "list1",
+      "descriptions": "list 1 descriptions ...."
     },
     {
       "id": 4,
-      "name": "list2"
+      "name": "list2",
+      "descriptions": "descriptions .... some ....0_o"
     }
   ],
   "tasks": [

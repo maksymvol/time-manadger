@@ -8,23 +8,27 @@ import {ProjectsListComponent} from './projects-list/projects-list.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ServerService} from './server.service';
-import {ProjectsResolve} from './projects-resolve';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { TasksPreviewListComponent } from './tasks-preview-list/tasks-preview-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksListComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    TasksPreviewListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [
     ServerService,
-    ProjectsResolve
   ],
   bootstrap: [AppComponent]
 })
