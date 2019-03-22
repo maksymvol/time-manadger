@@ -25,6 +25,15 @@ export class ProjectsService {
   }
 
   navigateTo(url: string) {
-    this.router.navigateByUrl(url);
+    const resultUrl = url.split(' ').join('_');
+    this.router.navigateByUrl(resultUrl);
+  }
+
+  getCurrentProjectName() {
+    return this.router.url.split('/')[2].split('_').join(' ');
+  }
+
+  getCurrentProject(name: string) {
+    return this.serverService.getProjectByName(name);
   }
 }

@@ -21,4 +21,8 @@ export class ServerService {
   getTasks(): Observable<Task> {
     return this.http.get<Task>(this.ROOT_URL + '/tasks');
   }
+
+  getProjectByName(name: string): Observable<Project> {
+    return this.http.get<Project>(this.ROOT_URL + '/projects/' + name);
+  }
 }

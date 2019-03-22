@@ -7,7 +7,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {TasksListComponent} from './tasks-list/tasks-list.component';
 import {ProjectsListComponent} from './projects-list/projects-list.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -15,14 +14,15 @@ import {ServerService} from './server.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TasksPreviewListComponent} from './tasks-preview-list/tasks-preview-list.component';
 import {ProjectCardComponent} from './project-card/project-card.component';
+import { ProjectPageComponent } from './project-page/project-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TasksListComponent,
     ProjectsListComponent,
     TasksPreviewListComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    ProjectPageComponent
   ],
   imports: [
     BrowserModule,
