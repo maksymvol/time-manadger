@@ -1,5 +1,6 @@
 .project-card {
   height: 80vh;
+  position: relative;
 }
 
 .container {
@@ -24,4 +25,21 @@
 .tasks-container {
   min-width: 150px;
   padding-left: 16px;
+  display: flex;
+}
+
+.task-info {
+  width: 30%;
+}
+
+.tasks {
+  width: 60%;
+}
+
+.priority-select {
+  width: 10%;
+}
+
+.save-btn {
+  margin-top: 15px;
 }

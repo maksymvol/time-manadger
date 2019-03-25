@@ -28,6 +28,7 @@ import {TasksComponent} from './tasks/tasks.component';
 import {TaskComponent} from './task/task.component';
 import {ProjectsService} from './projects.service';
 import {InputComponent} from './input/input.component';
+import { TaskCardComponent } from './task-card/task-card.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {InputComponent} from './input/input.component';
     ProjectPageComponent,
     TasksComponent,
     TaskComponent,
-    InputComponent
+    InputComponent,
+    TaskCardComponent
   ],
   imports: [
     BrowserModule,
