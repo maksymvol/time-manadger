@@ -8,6 +8,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import {DomSanitizer} from '@angular/platform-browser';
@@ -52,7 +53,8 @@ import {InputComponent} from './input/input.component';
     MatDividerModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [
     ServerService,

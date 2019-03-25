@@ -56,10 +56,11 @@ export class ProjectsService {
     return this.serverService.deleteProject(project.id);
   }
 
-  saveProjectInfo(name: string, description: string, project: Project) {
+  saveProjectInfo(name: string, description: string, priority: number, project: Project) {
     const updatedProject = project;
     updatedProject.descriptions = description;
     updatedProject.name = name;
+    updatedProject.priority = priority;
 
     return this.serverService.updateProject(updatedProject);
   }

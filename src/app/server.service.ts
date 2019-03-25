@@ -23,7 +23,7 @@ export class ServerService {
   }
 
   getProjectById(id): Observable<Project> {
-    return this.http.get<Project>(this.ROOT_URL + '/projects/' + id, );
+    return this.http.get<Project>(this.ROOT_URL + '/projects/' + id);
   }
 
   getTasksInCurrentProject(id): Observable<Task[]> {
@@ -31,7 +31,8 @@ export class ServerService {
   }
 
   addNewProject(projectName: string, newId: number) {
-    return this.http.post<Project>(this.ROOT_URL + '/projects/', {name: projectName, descriptions: 'Project description', id: newId});
+    return this.http.post<Project>(this.ROOT_URL + '/projects/',
+      {name: projectName, descriptions: 'Project description', id: newId, priority: 1});
   }
 
   deleteProject(id: number) {
