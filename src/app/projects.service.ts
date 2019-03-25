@@ -9,6 +9,8 @@ import {Router} from '@angular/router';
 })
 export class ProjectsService {
 
+  currentProjectId: number;
+
   constructor(private serverService: ServerService, private router: Router) {
   }
 
@@ -24,20 +26,33 @@ export class ProjectsService {
     return tasks.filter(task => task.projectId === project.id);
   }
 
+  changeCurrentProject(id) {
+    this.currentProjectId = id;
+  }
+
   navigateTo(url: string) {
     const resultUrl = url.split(' ').join('_');
     this.router.navigateByUrl(resultUrl);
   }
 
-  getCurrentProjectName() {
+  getCurrentProject() {
+    return this.serverService.getProjectById(this.currentProjectId);
+  }
+
+  getTasksInCurrentProject() {
+    return this.serverService.getTasksInCurrentProject(this.currentProjectId);
+  }
+
+  addNewProject(id) {
+    this.router.navigateByUrl('/projects/New_project');
+    return this.serverService.addNewProject('New project', id);
+  }
+
+  getCurrentProjectId() {
+
+  }
+
+  private getCurrentProjectName() {
     return this.router.url.split('/')[2].split('_').join(' ');
-  }
-
-  getCurrentProject(name: string) {
-    return this.serverService.getProjectByName(name);
-  }
-
-  getTasksInCurrentProject(name: string) {
-    return this.serverService.getTasksInCurrentProject(name);
   }
 }

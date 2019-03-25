@@ -23,6 +23,12 @@ export class ProjectsListComponent implements OnInit {
   }
 
   cardClicked(project: Project) {
+    this.projectsService.changeCurrentProject(project.id);
     this.projectsService.navigateTo('/projects/' + project.name);
+  }
+
+  handleNewCardClicked() {
+    const id = this.projects.reduce((prev, curr) => {return (prev.id > curr.id) ? prev : curr; }).id + 1;
+    this.projectsService.addNewProject(id).subscribe(res => this.projects.push(res));
   }
 }

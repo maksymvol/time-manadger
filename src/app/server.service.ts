@@ -22,11 +22,15 @@ export class ServerService {
     return this.http.get<Task[]>(this.ROOT_URL + '/tasks');
   }
 
-  getProjectByName(name: string): Observable<Project> {
-    return this.http.get<Project>(this.ROOT_URL + '/projects/' + name);
+  getProjectById(id): Observable<Project> {
+    return this.http.get<Project>(this.ROOT_URL + '/projects/' + id, );
   }
 
-  getTasksInCurrentProject(name): Observable<Task[]> {
-    return this.http.get<Task[]>(this.ROOT_URL + '/projects/' + name + '/tasks');
+  getTasksInCurrentProject(id): Observable<Task[]> {
+    return this.http.get<Task[]>(this.ROOT_URL + '/projects/' + id + '/tasks');
+  }
+
+  addNewProject(projectName: string, newId: number) {
+    return this.http.post<Project>(this.ROOT_URL + '/projects/', {name: projectName, descriptions: 'Project description', id: newId});
   }
 }

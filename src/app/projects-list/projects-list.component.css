@@ -1,6 +1,6 @@
 .project-card-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 mat-expansion-panel {
@@ -9,4 +9,51 @@ mat-expansion-panel {
 
 mat-expansion-panel:hover {
   background-color: #f9f9f9;
+}
+
+.new-project-card {
+  margin-bottom: 5px;
+  border-style: dashed;
+  background-color: #f9efe3;
+}
+
+.new-project-card:hover {
+  background-color: #f3e9dd;
+  cursor: pointer;
+}
+
+.plus-sign {
+  text-align: center;
+}
+
+.plus {
+  display: inline-block;
+
+  position: relative;
+  width: 4.5em;
+  height: 4.5em;
+  border-radius: 100%;
+  border: solid .3em #DFDAD7;
+}
+
+.plus .horizontal {
+  display: inline-block;
+
+  position: absolute;
+  background-color: #DFDAD7;
+  width: 2.4em;
+  height: .7em;
+  top: 1.9em;
+  left: 1.05em;
+}
+
+.plus .vertical {
+  display: inline-block;
+
+  position: absolute;
+  background-color: #DFDAD7;
+  width: .7em;
+  height: 2.4em;
+  top: 1.05em;
+  left: 1.9em;
 }
