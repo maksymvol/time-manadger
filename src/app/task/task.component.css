@@ -1,0 +1,12 @@
+.card {
+  margin-bottom: 5px;
+}
+
+.card:hover {
+  background-color: #f3e9dd;
+  cursor: pointer;
+}
+
+.card:active {
+  background-color: #ede3d7;
+}
