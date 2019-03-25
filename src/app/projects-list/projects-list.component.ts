@@ -26,9 +26,12 @@ export class ProjectsListComponent implements OnInit {
   }
 
   handleNewCardClicked() {
-    const id = this.projects.reduce((prev, curr) => {
-      return (prev.id > curr.id) ? prev : curr;
-    }).id + 1;
+    let id = 0;
+    if (this.projects.length !== 0) {
+      id = this.projects.reduce((prev, curr) => {
+        return (prev.id > curr.id) ? prev : curr;
+      }).id + 1;
+    }
     this.projectsService.addNewProject(id).subscribe(res => this.projects.push(res));
   }
 
