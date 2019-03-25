@@ -13,9 +13,7 @@ export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
   tasks: Task[] = [];
 
-  constructor(
-    private projectsService: ProjectsService
-  ) {}
+  constructor(private projectsService: ProjectsService) {}
 
   ngOnInit() {
     this.projectsService.getProjects().subscribe(res => this.projects = res);
@@ -28,7 +26,17 @@ export class ProjectsListComponent implements OnInit {
   }
 
   handleNewCardClicked() {
-    const id = this.projects.reduce((prev, curr) => {return (prev.id > curr.id) ? prev : curr; }).id + 1;
+    const id = this.projects.reduce((prev, curr) => {
+      return (prev.id > curr.id) ? prev : curr;
+    }).id + 1;
     this.projectsService.addNewProject(id).subscribe(res => this.projects.push(res));
+  }
+
+  deleteProject(project: Project) {
+    this.projectsService.deleteProject(project).subscribe(res => {}, (e) => {},
+      () => {
+        this.projectsService.getProjects().subscribe(res => this.projects = res);
+        this.projectsService.getTasks().subscribe(res => this.tasks = res);
+      });
   }
 }

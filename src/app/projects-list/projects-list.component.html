@@ -3,7 +3,8 @@
     <app-project-card
       [project]="project"
       [tasks]="projectsService.getTasksInProject(project, tasks)"
-      (handleCardClicked)="cardClicked($event)">
+      (handleCardClicked)="cardClicked($event)"
+      (handleDeleteProject)="deleteProject($event)">
     </app-project-card>
   </div>
 

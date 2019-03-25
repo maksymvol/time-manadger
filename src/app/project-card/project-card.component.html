@@ -1,10 +1,15 @@
-<mat-card (click)="cardClicked()">
+<mat-card>
   <div class="card-header">
-    <h2>{{project.name}}</h2>
+
+    <h2 (click)="cardClicked()">{{project.name}}</h2>
+
+    <div class="delete-btn-container" (click)="handleDeleteButton()">
+      <mat-icon svgIcon="delete"></mat-icon>
+    </div>
   </div>
-  <div>
+  <div (click)="cardClicked()">
     <p>{{project.descriptions}}</p>
   </div>
 
-  <app-tasks-preview-list [tasks]="tasks"></app-tasks-preview-list>
+  <app-tasks-preview-list [tasks]="tasks" (click)="cardClicked()"></app-tasks-preview-list>
 </mat-card>

@@ -33,4 +33,8 @@ export class ServerService {
   addNewProject(projectName: string, newId: number) {
     return this.http.post<Project>(this.ROOT_URL + '/projects/', {name: projectName, descriptions: 'Project description', id: newId});
   }
+
+  deleteProject(id: number) {
+    return this.http.delete(this.ROOT_URL + '/projects/' + id);
+  }
 }

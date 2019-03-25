@@ -55,4 +55,8 @@ export class ProjectsService {
   private getCurrentProjectName() {
     return this.router.url.split('/')[2].split('_').join(' ');
   }
+
+  deleteProject(project: Project) {
+    return this.serverService.deleteProject(project.id);
+  }
 }

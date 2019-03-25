@@ -5,6 +5,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -39,7 +43,8 @@ import { TaskComponent } from './task/task.component';
     MatExpansionModule,
     MatCardModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ],
   providers: [
     ServerService,
@@ -47,4 +52,9 @@ import { TaskComponent } from './task/task.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'delete',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/delete-icon.svg'));
+  }
 }
