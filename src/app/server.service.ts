@@ -37,4 +37,8 @@ export class ServerService {
   deleteProject(id: number) {
     return this.http.delete(this.ROOT_URL + '/projects/' + id);
   }
+
+  updateProject(project: Project) {
+    return this.http.put<Project>(this.ROOT_URL + '/projects/' + project.id, project);
+  }
 }

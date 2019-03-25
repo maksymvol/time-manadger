@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Project} from '../Project';
 import {Task} from '../Task';
 import {ProjectsService} from '../projects.service';
+import {InputComponent} from '../input/input.component';
 
 @Component({
   selector: 'app-project-page',
@@ -10,6 +11,7 @@ import {ProjectsService} from '../projects.service';
 })
 export class ProjectPageComponent implements OnInit {
 
+  @ViewChildren(InputComponent) inputComponents: QueryList<InputComponent>;
   project: Project = {name: '', descriptions: '', id: -1};
   tasks: Task[] = [];
 
@@ -21,4 +23,8 @@ export class ProjectPageComponent implements OnInit {
     this.projectsService.getTasksInCurrentProject().subscribe(res => this.tasks = res);
   }
 
+  saveProjectInfo() {
+    this.projectsService.saveProjectInfo(this.inputComponents.first.value, this.inputComponents.last.value, this.project)
+      .subscribe(res => this.project = res);
+  }
 }

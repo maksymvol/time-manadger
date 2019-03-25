@@ -48,15 +48,19 @@ export class ProjectsService {
     return this.serverService.addNewProject('New project', id);
   }
 
-  getCurrentProjectId() {
-
-  }
-
   private getCurrentProjectName() {
     return this.router.url.split('/')[2].split('_').join(' ');
   }
 
   deleteProject(project: Project) {
     return this.serverService.deleteProject(project.id);
+  }
+
+  saveProjectInfo(name: string, description: string, project: Project) {
+    const updatedProject = project;
+    updatedProject.descriptions = description;
+    updatedProject.name = name;
+
+    return this.serverService.updateProject(updatedProject);
   }
 }
