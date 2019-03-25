@@ -1,12 +1,15 @@
-<mat-card>
+<mat-card class="project-card">
   <div class="container">
     <div class="project-info-container">
-      <h1>{{project.name}}</h1>
-      <span>{{project.descriptions}}</span>
+      <app-input [placeholder]="'Project name'" [value]="project.name" [isTextArea]="false"></app-input>
+      <app-input [placeholder]="'Descriptions'" [value]="project.descriptions" [isTextArea]="true"></app-input>
     </div>
 
-    <div class="tasks-container">
-      <app-tasks [tasks]="tasks"></app-tasks>
+    <div class="settings-container">
     </div>
+  </div>
+
+  <div class="tasks-container">
+    <app-tasks [tasks]="tasks"></app-tasks>
   </div>
 </mat-card>
