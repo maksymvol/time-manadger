@@ -22,10 +22,10 @@
 
   <div class="tasks-container">
     <div class="tasks">
-      <app-tasks [tasks]="tasks"></app-tasks>
+      <app-tasks [tasks]="tasks" (taskClicked)="taskClicked($event)"></app-tasks>
     </div>
     <div class="task-info">
-      <app-task-card></app-task-card>
+      <app-task-card [task]="currentTask"></app-task-card>
     </div>
   </div>
 </mat-card>

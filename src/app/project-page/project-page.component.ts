@@ -15,6 +15,7 @@ export class ProjectPageComponent implements OnInit {
   project: Project = {name: '', descriptions: '', id: -1, priority: 1};
   tasks: Task[] = [];
   priority = '1';
+  currentTask: Task;
 
   constructor(private projectsService: ProjectsService) {
   }
@@ -27,5 +28,9 @@ export class ProjectPageComponent implements OnInit {
   saveProjectInfo() {
     this.projectsService.saveProjectInfo(this.inputComponents.first.value, this.inputComponents.last.value, +this.priority, this.project)
       .subscribe(res => this.project = res);
+  }
+
+  taskClicked(task: Task) {
+    this.currentTask = task;
   }
 }
