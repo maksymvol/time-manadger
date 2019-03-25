@@ -1,5 +1,5 @@
 <mat-form-field class="container">
-  <textarea *ngIf="isTextArea" matInput placeholder="{{placeholder}}" [(ngModel)]="value" ></textarea>
+  <textarea *ngIf="isTextArea" matInput placeholder="{{placeholder}}" [(ngModel)]="value" rows="4"></textarea>
   <input *ngIf="!isTextArea" matInput placeholder="{{placeholder}}" [(ngModel)]="value">
 
   <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
