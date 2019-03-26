@@ -47,4 +47,12 @@ export class ServerService {
   saveTask(task: Task) {
     return this.http.put<Task>(this.ROOT_URL + '/tasks/' + task.id, task);
   }
+
+  addNewTask(task) {
+    return this.http.post<Task>(this.ROOT_URL + '/tasks', task);
+  }
+
+  getNewTaskId() {
+    return this.http.get(this.ROOT_URL + '/tasks/generate-new-id');
+  }
 }

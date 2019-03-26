@@ -22,7 +22,7 @@
 
   <div class="tasks-container">
     <div class="tasks">
-      <app-tasks [tasks]="tasks" (taskClicked)="taskClicked($event)"></app-tasks>
+      <app-tasks [tasks]="tasks" (taskClicked)="taskClicked($event)" (newTaskClicked)="addNewTask()"></app-tasks>
     </div>
     <div class="task-info">
       <app-task-card [task]="currentTask" [priority]="currentTask.priority + ''"></app-task-card>

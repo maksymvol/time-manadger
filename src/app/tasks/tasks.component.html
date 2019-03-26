@@ -1,3 +1,13 @@
-<div *ngFor="let task of tasks" class="tasks-container">
-  <app-task [task]="task" (click)="handleTaskClicked(task)"></app-task>
+<div class="container">
+  <div class='new-task-card' (click)="handleNewTaskClicked()">
+    <mat-card>
+      <div class="content">
+        New Task
+      </div>
+    </mat-card>
+  </div>
+
+  <div *ngFor="let task of tasks" class="tasks-container">
+    <app-task [task]="task" (click)="handleTaskClicked(task)"></app-task>
+  </div>
 </div>

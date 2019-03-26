@@ -10,6 +10,7 @@ export class TasksComponent implements OnInit {
 
   @Input() tasks: Task[];
   @Output() taskClicked = new EventEmitter();
+  @Output() newTaskClicked = new EventEmitter();
 
   constructor() {
   }
@@ -19,5 +20,9 @@ export class TasksComponent implements OnInit {
 
   handleTaskClicked(task: Task) {
     this.taskClicked.emit(task);
+  }
+
+  handleNewTaskClicked() {
+    this.newTaskClicked.emit();
   }
 }

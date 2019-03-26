@@ -30,6 +30,8 @@ import {ProjectsService} from './projects.service';
 import {InputComponent} from './input/input.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TimePlanningPageComponent } from './time-planning-page/time-planning-page.component';
+import { SheduleCardComponent } from './shedule-card/shedule-card.component';
+import { SheduleComponent } from './shedule/shedule.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { TimePlanningPageComponent } from './time-planning-page/time-planning-pa
     TaskComponent,
     InputComponent,
     TaskCardComponent,
-    TimePlanningPageComponent
+    TimePlanningPageComponent,
+    SheduleCardComponent,
+    SheduleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,24 @@
+.container {
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+}
+
 .tasks-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-top: 10px;
+}
+
+.new-task-card {
+  padding-bottom: 10px;
+  width: 50%;
+  cursor: pointer;
+}
+
+mat-card {
+  background-color: #ede3d7;
+}
+
+mat-card:hover {
+  background-color: #eae0d4;
 }

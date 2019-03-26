@@ -48,4 +48,10 @@ export class ProjectPageComponent implements OnInit {
     };
     this.projectsService.saveTask(task).subscribe(res => this.currentTask = res);
   }
+
+  addNewTask() {
+    let taskId;
+    this.projectsService.getNewTaskId().subscribe(res => taskId = res, (e) => {},
+      () => {this.projectsService.addNewTask(this.project.id, taskId).subscribe(res => this.tasks.push(res)); });
+  }
 }

@@ -6,5 +6,5 @@ export interface Task {
   projectId: number;
   priority: number;
   duration: Duration;
-  expirationDate: string;
+  expirationDate: Date;
 }

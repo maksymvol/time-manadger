@@ -4,6 +4,7 @@ import {Task} from './Task';
 import {Project} from './Project';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
+import {Duration} from './Duration';
 
 @Injectable({
   providedIn: 'root'
@@ -77,5 +78,18 @@ export class ProjectsService {
       );
     /*console.log(this.routeUrl);
     return (this.routeUrl.split('/')[1] === url);*/
+  }
+
+  addNewTask(projectId, taskId) {
+    return this.serverService.addNewTask({
+      id: taskId,
+      name: 'new task',
+      projectId: projectId,
+      priority: 1
+    });
+  }
+
+  getNewTaskId() {
+    return this.serverService.getNewTaskId();
   }
 }

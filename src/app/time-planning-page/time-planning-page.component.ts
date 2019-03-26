@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProjectsService} from '../projects.service';
+import {TimeService} from '../time.service';
 
 @Component({
   selector: 'app-time-planning-page',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimePlanningPageComponent implements OnInit {
 
-  constructor() { }
+  tasks;
+  projects;
+  currentDate;
+  endDate;
+
+  constructor(private projectsService: ProjectsService, private timeService: TimeService) {
+    this.projectsService.getTasks().subscribe(res => this.tasks = res);
+    this.projectsService.getProjects().subscribe(res => this.projects = res);
+
+    this.currentDate = TimeService.getCurrentDate();
+    this.endDate = TimeService.getEndDate(this.tasks);
+  }
 
   ngOnInit() {
   }

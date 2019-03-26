@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+}
+
+.calendar-container {
+  background-color: lightblue;
+
+  width: 70vw;
+}
+
+.filter-container {
+  background-color: lightgreen;
+
+  width: 20vw;
+}
+
+.filter-container .header {
+  background-color: aquamarine;
+}
+
+.filter-container .filters {
+  background-color: aqua;
+}
