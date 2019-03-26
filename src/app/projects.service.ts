@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {ServerService} from './server.service';
 import {Task} from './Task';
 import {Project} from './Project';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -67,5 +68,14 @@ export class ProjectsService {
 
   saveTask(task) {
     return this.serverService.saveTask(task);
+  }
+
+  getRouteUrl() {
+    return this.router.events
+      .pipe(
+        filter(e => e instanceof NavigationEnd)
+      );
+    /*console.log(this.routeUrl);
+    return (this.routeUrl.split('/')[1] === url);*/
   }
 }

@@ -4,6 +4,8 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<button *ngIf="isInPlanningPage" class="to-planning-btn" mat-fab color="primary" (click)="generateButtonClicked()">Plan</button>
+
 <mat-card id="app-card">
   <router-outlet></router-outlet>
 </mat-card>
