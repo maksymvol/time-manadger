@@ -9,20 +9,20 @@ export class TimeService {
   }
 
   static getCurrentDate() {
-    const date = new Date();
-    return TimeService.getTimeString(date, true);
+    return new Date();
   }
 
   static getEndDate(tasks: any) {
-    let endDate = TimeService.stringToDate(TimeService.getCurrentDate());
+    let endDate = TimeService.getCurrentDate();
 
     for (const task of tasks) {
-      const date = TimeService.stringToDate(task.expirationDate);
+      const date = new Date(task.expirationDate);
+      console.log(date);
       if (date.getTime() > endDate.getTime()) {
         endDate = date;
       }
     }
-    return TimeService.getTimeString(endDate, false);
+    return endDate;
   }
 
   static getTimeString(date, incrementMonth: boolean) {

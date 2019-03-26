@@ -4,6 +4,7 @@ import {Task} from '../Task';
 import {ProjectsService} from '../projects.service';
 import {InputComponent} from '../input/input.component';
 import {TaskCardComponent} from '../task-card/task-card.component';
+import {TimeService} from '../time.service';
 
 @Component({
   selector: 'app-project-page',
@@ -13,7 +14,7 @@ import {TaskCardComponent} from '../task-card/task-card.component';
 export class ProjectPageComponent implements OnInit {
 
   @ViewChildren(InputComponent) inputComponents: QueryList<InputComponent>;
-  @ViewChild(TaskCardComponent) TaskInfoCard;
+  @ViewChild(TaskCardComponent) taskInfoCard;
   project: Project = {name: '', descriptions: '', id: -1, priority: 1};
   tasks: Task[] = [];
   priority = '1';
@@ -41,17 +42,22 @@ export class ProjectPageComponent implements OnInit {
 
   saveTaskChanges() {
     const task = {
-      name: this.TaskInfoCard.getName(),
-      priority: this.TaskInfoCard.getPriority(),
+      name: this.taskInfoCard.getName(),
+      priority: this.taskInfoCard.getPriority(),
       id: this.currentTask.id,
-      projectId: this.currentTask.projectId
+      projectId: this.currentTask.projectId,
+      expirationDate: this.taskInfoCard.getDate()
     };
+
     this.projectsService.saveTask(task).subscribe(res => this.currentTask = res);
   }
 
   addNewTask() {
     let taskId;
-    this.projectsService.getNewTaskId().subscribe(res => taskId = res, (e) => {},
-      () => {this.projectsService.addNewTask(this.project.id, taskId).subscribe(res => this.tasks.push(res)); });
+    this.projectsService.getNewTaskId().subscribe(res => taskId = res, (e) => {
+      },
+      () => {
+        this.projectsService.addNewTask(this.project.id, taskId).subscribe(res => this.tasks.push(res));
+      });
   }
 }

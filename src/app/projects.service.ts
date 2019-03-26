@@ -5,6 +5,7 @@ import {Project} from './Project';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {Duration} from './Duration';
+import {TimeService} from './time.service';
 
 @Injectable({
   providedIn: 'root'
@@ -76,16 +77,16 @@ export class ProjectsService {
       .pipe(
         filter(e => e instanceof NavigationEnd)
       );
-    /*console.log(this.routeUrl);
-    return (this.routeUrl.split('/')[1] === url);*/
   }
 
   addNewTask(projectId, taskId) {
+    // TODO correct expiration date
     return this.serverService.addNewTask({
       id: taskId,
       name: 'new task',
       projectId: projectId,
-      priority: 1
+      priority: 1,
+      expirationDate: TimeService.getCurrentDate()
     });
   }
 
