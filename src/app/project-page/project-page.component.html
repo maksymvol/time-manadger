@@ -12,9 +12,9 @@
   <div class="priority-select">
     <label>Priority</label>
     <mat-select [(value)]="priority">
-      <mat-option value="1">1</mat-option>
-      <mat-option value="2">2</mat-option>
-      <mat-option value="3">3</mat-option>
+      <mat-option value="1">1 - Highest</mat-option>
+      <mat-option value="2">2 - Middle</mat-option>
+      <mat-option value="3">3 - Lowest</mat-option>
     </mat-select>
   </div>
 
@@ -25,7 +25,7 @@
       <app-tasks [tasks]="tasks" (taskClicked)="taskClicked($event)"></app-tasks>
     </div>
     <div class="task-info">
-      <app-task-card [task]="currentTask"></app-task-card>
+      <app-task-card [task]="currentTask" [priority]="currentTask.priority + ''"></app-task-card>
     </div>
   </div>
 </mat-card>

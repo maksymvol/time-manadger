@@ -15,7 +15,7 @@ export class ProjectPageComponent implements OnInit {
   project: Project = {name: '', descriptions: '', id: -1, priority: 1};
   tasks: Task[] = [];
   priority = '1';
-  currentTask: Task;
+  currentTask = {name: '', priority: '0'};
 
   constructor(private projectsService: ProjectsService) {
   }

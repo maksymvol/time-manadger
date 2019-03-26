@@ -8,12 +8,12 @@ import {Task} from '../Task';
 })
 export class TaskCardComponent implements OnInit {
 
-  @Input() task: Task;
+  @Input() task;
+  @Input() priority;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

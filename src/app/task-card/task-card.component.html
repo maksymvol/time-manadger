@@ -1,3 +1,14 @@
-<p>
-  {{task.name}}
-</p>
+<mat-card class="container">
+  <app-input [placeholder]="'Task name'" [value]="task.name" [isTextArea]="false"></app-input>
+
+  <div class="priority-select">
+    <label>Priority</label>
+    <mat-select [(value)]="priority">
+      <mat-option value="1">1 - Highest</mat-option>
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3 - Middle</mat-option>
+      <mat-option value="3">4</mat-option>
+      <mat-option value="3">5 - Lowest</mat-option>
+    </mat-select>
+  </div>
+</mat-card>
