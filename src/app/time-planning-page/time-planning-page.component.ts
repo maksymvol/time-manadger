@@ -11,15 +11,14 @@ export class TimePlanningPageComponent implements OnInit {
 
   tasks;
   projects;
-  currentDate;
-  endDate;
+  currentDate: string;
+  endDate: string;
 
-  constructor(private projectsService: ProjectsService, private timeService: TimeService) {
-    this.projectsService.getTasks().subscribe(res => this.tasks = res);
+  constructor(private projectsService: ProjectsService) {
     this.projectsService.getProjects().subscribe(res => this.projects = res);
-
+    this.projectsService.getTasks().subscribe(res => this.tasks = res, (e) => {},
+      () => {this.endDate = TimeService.getEndDate(this.tasks); });
     this.currentDate = TimeService.getCurrentDate();
-    this.endDate = TimeService.getEndDate(this.tasks);
   }
 
   ngOnInit() {

@@ -8,18 +8,37 @@ export class TimeService {
   constructor() {
   }
 
-  static getCurrentDate(): Date {
-    return new Date();
+  static getCurrentDate() {
+    const date = new Date();
+    return TimeService.getTimeString(date, true);
   }
 
   static getEndDate(tasks: any) {
-    let endDate = TimeService.getCurrentDate();
+    let endDate = TimeService.stringToDate(TimeService.getCurrentDate());
+
     for (const task of tasks) {
-      if (task.expirationDate.getTime() > endDate.getTime()) {
-        endDate = task.expirationDate;
+      const date = TimeService.stringToDate(task.expirationDate);
+      if (date.getTime() > endDate.getTime()) {
+        endDate = date;
       }
     }
-    console.log(endDate);
-    return endDate;
+    return TimeService.getTimeString(endDate, false);
+  }
+
+  static getTimeString(date, incrementMonth: boolean) {
+    let result = '';
+    result += date.getDate() + '-';
+    if (incrementMonth) {
+      result += date.getMonth() + 1;
+    } else {
+      result += date.getMonth();
+    }
+    result += '-' + date.getFullYear();
+    return result;
+  }
+
+  static stringToDate(s: string) {
+    const date = s.split('-');
+    return new Date(+date[2], +date[1], +date[0]);
   }
 }
