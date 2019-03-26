@@ -3,6 +3,7 @@ import {Project} from '../Project';
 import {Task} from '../Task';
 import {ProjectsService} from '../projects.service';
 import {InputComponent} from '../input/input.component';
+import {TaskCardComponent} from '../task-card/task-card.component';
 
 @Component({
   selector: 'app-project-page',
@@ -12,16 +13,20 @@ import {InputComponent} from '../input/input.component';
 export class ProjectPageComponent implements OnInit {
 
   @ViewChildren(InputComponent) inputComponents: QueryList<InputComponent>;
+  @ViewChild(TaskCardComponent) TaskInfoCard;
   project: Project = {name: '', descriptions: '', id: -1, priority: 1};
   tasks: Task[] = [];
   priority = '1';
-  currentTask = {name: '', priority: '0'};
+  currentTask = {name: '', priority: 0, id: -1, projectId: -1};
 
   constructor(private projectsService: ProjectsService) {
   }
 
   ngOnInit() {
-    this.projectsService.getCurrentProject().subscribe(res => {this.project = res; this.priority = res.priority + ''; });
+    this.projectsService.getCurrentProject().subscribe(res => {
+      this.project = res;
+      this.priority = res.priority + '';
+    });
     this.projectsService.getTasksInCurrentProject().subscribe(res => this.tasks = res);
   }
 
@@ -32,5 +37,15 @@ export class ProjectPageComponent implements OnInit {
 
   taskClicked(task: Task) {
     this.currentTask = task;
+  }
+
+  saveTaskChanges() {
+    const task = {
+      name: this.TaskInfoCard.getName(),
+      priority: this.TaskInfoCard.getPriority(),
+      id: this.currentTask.id,
+      projectId: this.currentTask.projectId
+    };
+    this.projectsService.saveTask(task).subscribe(res => this.currentTask = res);
   }
 }

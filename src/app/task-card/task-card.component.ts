@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Task} from '../Task';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {InputComponent} from '../input/input.component';
 
 @Component({
   selector: 'app-task-card',
@@ -8,6 +8,7 @@ import {Task} from '../Task';
 })
 export class TaskCardComponent implements OnInit {
 
+  @ViewChild(InputComponent) inputComponent;
   @Input() task;
   @Input() priority;
 
@@ -15,5 +16,13 @@ export class TaskCardComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getName() {
+    return this.inputComponent.value;
+  }
+
+  getPriority() {
+    return this.priority;
   }
 }

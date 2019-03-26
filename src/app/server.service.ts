@@ -42,4 +42,9 @@ export class ServerService {
   updateProject(project: Project) {
     return this.http.put<Project>(this.ROOT_URL + '/projects/' + project.id, project);
   }
+
+  // TASKS
+  saveTask(task: Task) {
+    return this.http.put<Task>(this.ROOT_URL + '/tasks/' + task.id, task);
+  }
 }

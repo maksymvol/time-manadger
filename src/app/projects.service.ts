@@ -64,4 +64,8 @@ export class ProjectsService {
 
     return this.serverService.updateProject(updatedProject);
   }
+
+  saveTask(task) {
+    return this.serverService.saveTask(task);
+  }
 }

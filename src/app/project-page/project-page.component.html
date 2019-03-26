@@ -26,6 +26,7 @@
     </div>
     <div class="task-info">
       <app-task-card [task]="currentTask" [priority]="currentTask.priority + ''"></app-task-card>
+      <button class="save-btn" mat-raised-button color="primary" (click)="saveTaskChanges()">Save</button>
     </div>
   </div>
 </mat-card>
