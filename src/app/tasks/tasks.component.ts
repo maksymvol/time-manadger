@@ -9,6 +9,8 @@ import {Task} from '../Task';
 export class TasksComponent implements OnInit {
 
   @Input() tasks: Task[];
+  @Input() currentTask: Task;
+
   @Output() taskClicked = new EventEmitter();
   @Output() newTaskClicked = new EventEmitter();
 

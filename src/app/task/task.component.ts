@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Task} from '../Task';
+import {TimeService} from '../time.service';
 
 @Component({
   selector: 'app-task',
@@ -9,6 +10,7 @@ import {Task} from '../Task';
 export class TaskComponent implements OnInit {
 
   @Input() task: Task;
+  @Input() currentTask: Task;
 
   constructor() {
   }
@@ -16,4 +18,7 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  getDate() {
+    return TimeService.getTimeString(new Date(this.task.expirationDate), true);
+  }
 }

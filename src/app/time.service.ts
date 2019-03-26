@@ -17,7 +17,6 @@ export class TimeService {
 
     for (const task of tasks) {
       const date = new Date(task.expirationDate);
-      console.log(date);
       if (date.getTime() > endDate.getTime()) {
         endDate = date;
       }
@@ -27,7 +26,7 @@ export class TimeService {
 
   static getTimeString(date, incrementMonth: boolean) {
     let result = '';
-    result += date.getDate() + '/';
+    result += date.getDate() + '-';
     if (incrementMonth) {
       result += date.getMonth() + 1;
     } else {

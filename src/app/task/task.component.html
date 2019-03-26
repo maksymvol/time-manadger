@@ -1,9 +1,10 @@
-<mat-card class="card">
+<mat-card class="card" [ngClass]="{checked:currentTask.id === task.id}" >
   <div class="header">
     {{task.name}}
   </div>
   <div class="info">
-    priority: 1;
-    Time frames: tag1, tag2, tag3;
+    priority: {{task.priority}};
+    <br>
+    Expiration date: {{getDate()}}
   </div>
 </mat-card>

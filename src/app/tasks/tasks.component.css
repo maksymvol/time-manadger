@@ -22,3 +22,7 @@ mat-card {
 mat-card:hover {
   background-color: #eae0d4;
 }
+
+.checked {
+  background-color: aquamarine;
+}
