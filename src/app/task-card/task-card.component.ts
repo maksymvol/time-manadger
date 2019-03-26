@@ -11,7 +11,9 @@ export class TaskCardComponent implements OnInit {
   @ViewChild(InputComponent) inputComponent;
   @Input() task;
   @Input() priority;
+  @Input() date: string;
 
+  // TODO fix date picker value binding
   constructor() {
   }
 
@@ -24,5 +26,9 @@ export class TaskCardComponent implements OnInit {
 
   getPriority() {
     return this.priority;
+  }
+
+  getDate() {
+    return this.date;
   }
 }

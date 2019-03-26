@@ -9,6 +9,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
 
 
 import {DomSanitizer} from '@angular/platform-browser';
@@ -28,10 +30,10 @@ import {TasksComponent} from './tasks/tasks.component';
 import {TaskComponent} from './task/task.component';
 import {ProjectsService} from './projects.service';
 import {InputComponent} from './input/input.component';
-import { TaskCardComponent } from './task-card/task-card.component';
-import { TimePlanningPageComponent } from './time-planning-page/time-planning-page.component';
-import { SheduleCardComponent } from './shedule-card/shedule-card.component';
-import { SheduleComponent } from './shedule/shedule.component';
+import {TaskCardComponent} from './task-card/task-card.component';
+import {TimePlanningPageComponent} from './time-planning-page/time-planning-page.component';
+import {SheduleCardComponent} from './shedule-card/shedule-card.component';
+import {SheduleComponent} from './shedule/shedule.component';
 
 @NgModule({
   declarations: [
@@ -62,11 +64,13 @@ import { SheduleComponent } from './shedule/shedule.component';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     ServerService,
-    ProjectsService
+    ProjectsService,
   ],
   bootstrap: [AppComponent]
 })

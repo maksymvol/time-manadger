@@ -27,7 +27,7 @@ export class TimeService {
 
   static getTimeString(date, incrementMonth: boolean) {
     let result = '';
-    result += date.getDate() + '-';
+    result += date.getDate() + '/';
     if (incrementMonth) {
       result += date.getMonth() + 1;
     } else {
@@ -38,7 +38,7 @@ export class TimeService {
   }
 
   static stringToDate(s: string) {
-    const date = s.split('-');
+    const date = s.split('/');
     return new Date(+date[2], +date[1], +date[0]);
   }
 }
