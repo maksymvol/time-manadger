@@ -80,13 +80,13 @@ export class ProjectsService {
   }
 
   addNewTask(projectId, taskId) {
-    // TODO correct expiration date
     return this.serverService.addNewTask({
       id: taskId,
       name: 'new task',
       projectId: projectId,
       priority: 1,
-      expirationDate: TimeService.getCurrentDate()
+      expirationDate: TimeService.getCurrentDate(),
+      duration: '1h'
     });
   }
 

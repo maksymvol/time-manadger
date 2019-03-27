@@ -1,5 +1,5 @@
 <mat-card class="container">
-  <app-input [placeholder]="'Task name'" [value]="task.name" [isTextArea]="false"></app-input>
+  <app-input [placeholder]="'Task name'" [value]="task.name" [isTextArea]="false" [clearButton]="true"></app-input>
 
   <div class="priority-select">
     <label>Priority</label>
@@ -13,8 +13,10 @@
   </div>
 
   <mat-form-field>
-    <input matInput [matDatepicker]="picker3" placeholder="Value binding" [(ngModel)]="date">
+    <input matInput [matDatepicker]="picker3" placeholder="Expiration date" [(ngModel)]="date">
     <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
     <mat-datepicker #picker3></mat-datepicker>
   </mat-form-field>
+
+  <app-input [placeholder]="'Time measure'" [value]="task.duration" [isTextArea]="false" [clearButton]="false"></app-input>
 </mat-card>

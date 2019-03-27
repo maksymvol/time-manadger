@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {InputComponent} from '../input/input.component';
 
 @Component({
@@ -8,12 +8,11 @@ import {InputComponent} from '../input/input.component';
 })
 export class TaskCardComponent implements OnInit {
 
-  @ViewChild(InputComponent) inputComponent;
+  @ViewChildren(InputComponent) inputComponent: QueryList<InputComponent>;
   @Input() task;
   @Input() priority;
   @Input() date: string;
 
-  // TODO fix date picker value binding
   constructor() {
   }
 
@@ -21,7 +20,7 @@ export class TaskCardComponent implements OnInit {
   }
 
   getName() {
-    return this.inputComponent.value;
+    return this.inputComponent.first.value;
   }
 
   getPriority() {
@@ -30,5 +29,9 @@ export class TaskCardComponent implements OnInit {
 
   getDate() {
     return this.date;
+  }
+
+  getTimeMeasure() {
+    return this.inputComponent.last.value;
   }
 }

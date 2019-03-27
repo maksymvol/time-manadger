@@ -4,7 +4,6 @@ import {Task} from '../Task';
 import {ProjectsService} from '../projects.service';
 import {InputComponent} from '../input/input.component';
 import {TaskCardComponent} from '../task-card/task-card.component';
-import {TimeService} from '../time.service';
 
 @Component({
   selector: 'app-project-page',
@@ -46,7 +45,8 @@ export class ProjectPageComponent implements OnInit {
       priority: this.taskInfoCard.getPriority(),
       id: this.currentTask.id,
       projectId: this.currentTask.projectId,
-      expirationDate: this.taskInfoCard.getDate()
+      expirationDate: this.taskInfoCard.getDate(),
+      duration: this.taskInfoCard.getTimeMeasure()
     };
 
     this.projectsService.saveTask(task).subscribe(res => this.currentTask = res);

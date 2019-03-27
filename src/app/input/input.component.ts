@@ -10,6 +10,7 @@ export class InputComponent implements OnInit {
   @Input() placeholder: string;
   @Input() value: string;
   @Input() isTextArea: boolean;
+  @Input() clearButton: boolean;
 
   constructor() {
   }
