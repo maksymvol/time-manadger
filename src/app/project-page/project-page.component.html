@@ -25,7 +25,8 @@
       <app-tasks [tasks]="tasks" (taskClicked)="taskClicked($event)" (newTaskClicked)="addNewTask()" [currentTask]="currentTask"></app-tasks>
     </div>
     <div class="task-info">
-      <app-task-card [task]="currentTask" [priority]="currentTask.priority + ''" [date]="currentTask.expirationDate"></app-task-card>
+      <app-task-card [task]="currentTask" [priority]="currentTask.priority + ''"
+                     [startDate]="currentTask.startDate"></app-task-card>
       <button class="save-btn" mat-raised-button color="primary" (click)="saveTaskChanges()">Save</button>
     </div>
   </div>

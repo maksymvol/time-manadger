@@ -2,13 +2,14 @@
   <div class="calendar-template" *ngIf="displayMode === 'calendar'">
     <mat-grid-list cols="14">
       <mat-grid-tile *ngFor="let day of getMonthDays(currentDate)" [colspan]="2" [rowspan]="1" class="card">
-        <app-shedule-card [day]="day" (handleDateClicked)="handleDateClicked($event)" [dayInfo]="getDayInfo(day)">
-        </app-shedule-card>
+        <app-shedule-card [day]="day" (handleDateClicked)="handleDateClicked($event)" [dayInfo]="getDayInfo(day)"></app-shedule-card>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
 
   <div class="day-cards-template" *ngIf="displayMode === 'dayCards'">
-
+    <div class="day-card" *ngFor="let day of getScheduleDays()">
+      <app-schedule-day-card [day]="day" [dayInfo]="getDayInfo(day)"></app-schedule-day-card>
+    </div>
   </div>
 </div>

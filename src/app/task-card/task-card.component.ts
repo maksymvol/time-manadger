@@ -11,7 +11,7 @@ export class TaskCardComponent implements OnInit {
   @ViewChildren(InputComponent) inputComponent: QueryList<InputComponent>;
   @Input() task;
   @Input() priority;
-  @Input() date: string;
+  @Input() startDate: string;
 
   constructor() {
   }
@@ -27,8 +27,8 @@ export class TaskCardComponent implements OnInit {
     return this.priority;
   }
 
-  getDate() {
-    return this.date;
+  getStartDate() {
+    return this.startDate;
   }
 
   getTimeMeasure() {

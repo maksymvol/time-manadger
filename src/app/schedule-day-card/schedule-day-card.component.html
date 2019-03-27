@@ -1,3 +1,19 @@
-<p>
-  schedule-day-card works!
-</p>
+<mat-card>
+  <div class="header">
+    {{day.toDateString()}}
+  </div>
+
+  <div class="card-body">
+    Tasks: {{dayInfo.taskAmount}}
+    <br>
+    Projects: {{dayInfo.projects}}
+    <br>
+    Hours: {{dayInfo.hours}}
+  </div>
+
+  <div class="tasks">
+    <div class="task-container" *ngFor="let task of dayInfo.tasks">
+      {{task.name}}
+    </div>
+  </div>
+</mat-card>

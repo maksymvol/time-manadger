@@ -85,8 +85,8 @@ export class ProjectsService {
       name: 'new task',
       projectId: projectId,
       priority: 1,
-      expirationDate: TimeService.getCurrentDate(),
-      duration: '1/h'
+      duration: '1/h',
+      startDate: TimeService.getCurrentDate()
     });
   }
 

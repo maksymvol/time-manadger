@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-schedule-day-card',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleDayCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() day: Date;
+  @Input() dayInfo: any;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

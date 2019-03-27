@@ -13,7 +13,7 @@ export class TimePlanningPageComponent implements OnInit {
   projects;
   currentDate: string;
   endDate: string;
-  displayMode = 'calendar';
+  displayMode = 'dayCards'; // dayCards, calendar
 
   constructor(private projectsService: ProjectsService) {
     this.projectsService.getProjects().subscribe(res => this.projects = res);
