@@ -17,7 +17,7 @@ export class TimeService {
     let endDate = TimeService.getCurrentDate();
 
     for (const task of tasks) {
-      const date = new Date(task.expirationDate);
+      const date = new Date(task.startDate);
       if (date.getTime() > endDate.getTime()) {
         endDate = date;
       }

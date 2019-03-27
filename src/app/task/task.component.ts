@@ -19,6 +19,6 @@ export class TaskComponent implements OnInit {
   }
 
   getDate() {
-    return TimeService.getTimeString(new Date(this.task.expirationDate), true);
+    return new Date(this.task.startDate).toDateString();
   }
 }
