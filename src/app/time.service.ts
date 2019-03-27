@@ -40,4 +40,21 @@ export class TimeService {
     const date = s.split('/');
     return new Date(+date[2], +date[1], +date[0]);
   }
+
+  static getDatesFromTo(start, end) {
+    const startDate = new Date(start);
+    const stopDate = TimeService.addDays(new Date(end), 1);
+
+    const dateArray = [];
+    let currentDate = startDate;
+    while (currentDate <= stopDate) {
+      dateArray.push(new Date(currentDate));
+      currentDate = TimeService.addDays(currentDate, 1);
+    }
+    return dateArray;
+  }
+
+  static addDays(date: Date, days: number) {
+    return new Date(date.setDate(date.getDate() + days));
+  }
 }
