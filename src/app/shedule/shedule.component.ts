@@ -23,4 +23,11 @@ export class SheduleComponent implements OnInit {
     return TimeService.getDatesFromTo(this.currentDate, this.endDate);
   }
 
+  getMonthDays(currentDate) {
+    return TimeService.getMonthDays(currentDate);
+  }
+
+  handleCalendarClicked(day: Date) {
+    console.log(day);
+  }
 }

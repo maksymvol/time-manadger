@@ -57,4 +57,14 @@ export class TimeService {
   static addDays(date: Date, days: number) {
     return new Date(date.setDate(date.getDate() + days));
   }
+
+  static getMonthDays(currentDate: Date) {
+    const result = [];
+    const daysAmount = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+    for (let i = 1; i <= daysAmount; i++) {
+      const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+      result.push(date);
+    }
+    return result;
+  }
 }

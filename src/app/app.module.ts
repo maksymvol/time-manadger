@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import {DomSanitizer} from '@angular/platform-browser';
@@ -66,7 +67,8 @@ import {SheduleComponent} from './shedule/shedule.component';
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatGridListModule
   ],
   providers: [
     ServerService,

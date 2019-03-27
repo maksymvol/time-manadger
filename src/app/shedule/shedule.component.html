@@ -1,6 +1,8 @@
 <div class="container">
-  <div *ngFor="let day of getScheduleDays()">
-    <app-shedule-card [day]="day">
-    </app-shedule-card>
-  </div>
+  <mat-grid-list cols="14">
+    <mat-grid-tile *ngFor="let day of getMonthDays(currentDate)" [colspan]="2" [rowspan]="1" class="card" (click)="handleCalendarClicked(day)">
+      <app-shedule-card [day]="day">
+      </app-shedule-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

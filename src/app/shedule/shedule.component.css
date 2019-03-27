@@ -1,0 +1,8 @@
+.card {
+  background-color: #ffeaf6;
+}
+
+.card:hover {
+  background-color: #fae5f1;
+  cursor: pointer;
+}
