@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Task} from './Task';
 
 @Injectable({
   providedIn: 'root'
@@ -66,5 +67,54 @@ export class TimeService {
       result.push(date);
     }
     return result;
+  }
+
+  static getDayInfo(day: Date, tasks: Task[]) {
+    const result = {tasks: [], taskAmount: 0, projects: 0, hours: 0};
+    if (!tasks) {
+      return result;
+    }
+
+    for (let task of tasks) {
+      if (TimeService.isInDay(day, task)) {
+        result.taskAmount++;
+        result.hours += TimeService.getDurationInHours(task.duration);
+
+        if (!TimeService.isAlreadyInProjects(task, result.tasks)) {
+          result.projects++;
+        }
+        result.tasks.push(task);
+      }
+    }
+    console.log(result);
+    return result;
+  }
+
+  private static isInDay(day: Date, task: Task) {
+    // TODO 1;
+    return true;
+  }
+
+  private static getDurationInHours(duration: string) {
+    const num = +duration.split('/')[0];
+    const t = duration.split('/')[1];
+    if (t === 'm') {
+      return num * 0.01;
+    }
+    if (t === 'h') {
+      return num;
+    }
+    if (t === 'd') {
+      return num * 24;
+    }
+  }
+
+  private static isAlreadyInProjects(task: Task, tasks: Task[]) {
+    for (let t of tasks) {
+      if (task.projectId === t.projectId) {
+        return true;
+      }
+    }
+    return false;
   }
 }

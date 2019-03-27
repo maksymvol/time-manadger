@@ -1,10 +1,19 @@
 <div class="container">
   <div class="calendar-container">
-    <app-shedule [tasks]="tasks" [projects]="projects" [endDate]="endDate" [currentDate]="currentDate"></app-shedule>
+    <app-shedule [tasks]="tasks" [projects]="projects" [endDate]="endDate" [currentDate]="currentDate" [displayMode]="displayMode"></app-shedule>
   </div>
 
   <div class="filter-container">
     <div class="filter-container header">Filter settings</div>
-    <div class="filter-container filters">Some filter</div>
+
+    <div class="filter-container filters">
+      <div class="display-mode-select">
+        <label>Display mode</label>
+        <mat-select [(value)]="displayMode">
+          <mat-option value="calendar">Calendar</mat-option>
+          <mat-option value="dayCards">Day cards</mat-option>
+        </mat-select>
+      </div>
+    </div>
   </div>
 </div>

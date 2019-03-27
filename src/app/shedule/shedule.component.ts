@@ -12,6 +12,7 @@ export class SheduleComponent implements OnInit {
   @Input() tasks;
   @Input() endDate;
   @Input() currentDate;
+  @Input() displayMode;
 
   constructor() {
   }
@@ -27,7 +28,11 @@ export class SheduleComponent implements OnInit {
     return TimeService.getMonthDays(currentDate);
   }
 
-  handleCalendarClicked(day: Date) {
+  handleDateClicked(day: Date) {
     console.log(day);
+  }
+
+  getDayInfo(day: Date) {
+    return TimeService.getDayInfo(day, this.tasks);
   }
 }

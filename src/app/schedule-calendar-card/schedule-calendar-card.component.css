@@ -1,0 +1,11 @@
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.date {
+  position: absolute;
+  padding-left: 47%;
+  padding-top: 20%;
+}

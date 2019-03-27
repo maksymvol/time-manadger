@@ -13,11 +13,15 @@ export class TimePlanningPageComponent implements OnInit {
   projects;
   currentDate: string;
   endDate: string;
+  displayMode = 'calendar';
 
   constructor(private projectsService: ProjectsService) {
     this.projectsService.getProjects().subscribe(res => this.projects = res);
-    this.projectsService.getTasks().subscribe(res => this.tasks = res, (e) => {},
-      () => {this.endDate = TimeService.getEndDate(this.tasks); });
+    this.projectsService.getTasks().subscribe(res => this.tasks = res, (e) => {
+      },
+      () => {
+        this.endDate = TimeService.getEndDate(this.tasks);
+      });
     this.currentDate = TimeService.getCurrentDate();
   }
 

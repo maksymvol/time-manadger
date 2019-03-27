@@ -86,7 +86,7 @@ export class ProjectsService {
       projectId: projectId,
       priority: 1,
       expirationDate: TimeService.getCurrentDate(),
-      duration: '1h'
+      duration: '1/h'
     });
   }
 
