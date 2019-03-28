@@ -117,10 +117,21 @@ export class TimeService {
   }
 
   private static isInDay(day: Date, task: Task) {
-    // TODO 1;
     const taskStart = new Date(task.startDate);
-    if (taskStart <= day) {
-      return true;
+    if (taskStart >= day) {
+      return false;
+    }
+
+    for (const tag of task.tags) {
+      if (tag.tag === 'everyDay') {
+        return true;
+      }
+      if (tag.tag === 'workingDays') {
+        return day.getDay() >= 1 && day.getDay() <= 5;
+      }
+      if (tag.tag === 'weekendDays') {
+        return day.getDay() === 0 || day.getDay() === 6;
+      }
     }
     return false;
   }
