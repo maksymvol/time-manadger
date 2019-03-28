@@ -3,7 +3,7 @@
 
   <div class="priority-select">
     <label>Priority</label>
-    <mat-select [(value)]="priority">
+    <mat-select [(value)]="task.priority">
       <mat-option value="1">1 - Highest</mat-option>
       <mat-option value="2">2</mat-option>
       <mat-option value="3">3 - Middle</mat-option>
@@ -13,10 +13,11 @@
   </div>
 
   <mat-form-field>
-    <input matInput [matDatepicker]="picker2" placeholder="Start date" [(ngModel)]="startDate">
+    <input matInput [matDatepicker]="picker2" placeholder="Start date" [(ngModel)]="task.startDate">
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
   <app-input [placeholder]="'Duration'" [value]="task.duration" [isTextArea]="false" [clearButton]="false"></app-input>
+  <app-input [placeholder]="'Tags'" [value]="getTagsInitial()" [isTextArea]="false" [clearButton]="true"></app-input>
 </mat-card>

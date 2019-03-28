@@ -10,8 +10,6 @@ export class TaskCardComponent implements OnInit {
 
   @ViewChildren(InputComponent) inputComponent: QueryList<InputComponent>;
   @Input() task;
-  @Input() priority;
-  @Input() startDate: string;
 
   constructor() {
   }
@@ -20,18 +18,35 @@ export class TaskCardComponent implements OnInit {
   }
 
   getName() {
-    return this.inputComponent.first.value;
+    return this.getChild('Task name').value;
   }
 
   getPriority() {
-    return this.priority;
+    return this.task.priority;
   }
 
   getStartDate() {
-    return this.startDate;
+    return this.task.startDate;
   }
 
   getTimeMeasure() {
-    return this.inputComponent.last.value;
+    return this.getChild('Duration').value;
+  }
+
+  getTags() {
+    return this.getChild('Tags').value;
+  }
+
+  getTagsInitial(): string {
+    if (this.task.tags.length === 0) {
+      return '';
+    }
+    return this.task.tags.reduce((acc, cur) => {
+      return acc + cur.tag + ', ';
+    }, '');
+  }
+
+  private getChild(placeholder) {
+    return this.inputComponent.find(item => item.placeholder === placeholder);
   }
 }

@@ -20,6 +20,15 @@ export class ProjectsService {
     return tasks.sort((a, b) => a.priority - b.priority);
   }
 
+  static getTagsAsArray(tags: string) {
+    const result = [];
+    const arr = tags.split(', ');
+    for (let t of arr) {
+      result.push({tag: t});
+    }
+    return result;
+  }
+
   getProjects() {
     return this.serverService.getProjects();
   }
@@ -90,7 +99,7 @@ export class ProjectsService {
       priority: 1,
       duration: '1/h',
       startDate: TimeService.getCurrentDate(),
-      tags: [{tag: 'workingDay'}, {tag: 'everyDay'}]
+      tags: [{tag: 'everyDay'}]
     });
   }
 
