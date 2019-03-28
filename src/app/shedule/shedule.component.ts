@@ -13,6 +13,7 @@ export class SheduleComponent implements OnInit {
   @Input() endDate;
   @Input() currentDate;
   @Input() displayMode;
+  @Input() skipEmptyDays;
 
   constructor() {
   }
@@ -33,6 +34,10 @@ export class SheduleComponent implements OnInit {
   }
 
   getDayInfo(day: Date) {
-    return TimeService.getDayInfo(day, this.tasks);
+    return TimeService.getDayInfo(day, this.tasks, this.skipEmptyDays);
+  }
+
+  isEmptyDay(day: Date) {
+    return this.skipEmptyDays && TimeService.isEmptyDay(day, this.tasks);
   }
 }

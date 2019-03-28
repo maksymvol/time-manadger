@@ -9,7 +9,9 @@
 
   <div class="day-cards-template" *ngIf="displayMode === 'dayCards'">
     <div class="day-card" *ngFor="let day of getScheduleDays()">
-      <app-schedule-day-card [day]="day" [dayInfo]="getDayInfo(day)"></app-schedule-day-card>
+      <div *ngIf="!isEmptyDay(day)">
+        <app-schedule-day-card [day]="day" [dayInfo]="getDayInfo(day)"></app-schedule-day-card>
+      </div>
     </div>
   </div>
 </div>

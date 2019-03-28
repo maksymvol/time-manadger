@@ -12,7 +12,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
@@ -70,7 +70,8 @@ import { ScheduleDayCardComponent } from './schedule-day-card/schedule-day-card.
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCheckboxModule
   ],
   providers: [
     ServerService,

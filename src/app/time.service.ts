@@ -72,7 +72,7 @@ export class TimeService {
     return result;
   }
 
-  static getDayInfo(day: Date, tasks: Task[]) {
+  static getDayInfo(day: Date, tasks: Task[], skipEmptyDays: boolean) {
     const result = {tasks: [], taskAmount: 0, projects: 0, hours: 0};
     if (!tasks) {
       return result;
@@ -144,5 +144,15 @@ export class TimeService {
       }
     }
     return result.length;
+  }
+
+  static isEmptyDay(day: Date, tasks: Task[]) {
+    for (const task of tasks) {
+      if (TimeService.isInDay(day, task)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }
