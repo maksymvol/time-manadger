@@ -89,7 +89,8 @@ export class ProjectsService {
       projectId: projectId,
       priority: 1,
       duration: '1/h',
-      startDate: TimeService.getCurrentDate()
+      startDate: TimeService.getCurrentDate(),
+      tags: [{tag: 'workingDay'}, {tag: 'everyDay'}]
     });
   }
 

@@ -1,3 +1,5 @@
+import {Tag} from './Tag';
+
 export interface Task {
   isFitInDay: boolean;
   id: number;
@@ -6,4 +8,5 @@ export interface Task {
   priority: number;
   duration: string;
   startDate: string;
+  tags: Tag[];
 }

@@ -17,7 +17,7 @@ export class ProjectPageComponent implements OnInit {
   project: Project = {name: '', descriptions: '', id: -1, priority: 1};
   tasks: Task[] = [];
   priority = '1';
-  currentTask = {name: '', priority: 0, id: -1, projectId: -1, startDate: '4/13/2019'};
+  currentTask = {name: '', priority: 0, id: -1, projectId: -1, startDate: '4/13/2019', tags: []};
 
   constructor(private projectsService: ProjectsService) {
   }
@@ -46,7 +46,8 @@ export class ProjectPageComponent implements OnInit {
       id: this.currentTask.id,
       projectId: this.currentTask.projectId,
       duration: this.taskInfoCard.getTimeMeasure(),
-      startDate: this.taskInfoCard.getStartDate()
+      startDate: this.taskInfoCard.getStartDate(),
+      tags: this.currentTask.tags,
     };
 
     this.projectsService.saveTask(task).subscribe(res => this.currentTask = res);
