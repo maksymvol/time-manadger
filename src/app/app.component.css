@@ -11,3 +11,12 @@
   margin-left: 90vw;
   margin-top: 80vh;
 }
+
+.projects-link {
+  color: white;
+  padding-left: 80vw;
+}
+
+.projects-link:active {
+  color: #ba9aa9;
+}
