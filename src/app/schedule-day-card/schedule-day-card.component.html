@@ -13,7 +13,13 @@
 
   <div class="tasks">
     <div class="task-container" *ngFor="let task of dayInfo.tasks">
-      {{task.name}}
+      <div *ngIf="task.isFitInDay">
+        {{task.name}}
+      </div>
+
+      <div *ngIf="!task.isFitInDay">
+        Does not fit in day: {{task.name}}
+      </div>
     </div>
   </div>
 </mat-card>

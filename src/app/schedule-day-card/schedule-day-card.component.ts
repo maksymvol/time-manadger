@@ -15,5 +15,4 @@ export class ScheduleDayCardComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

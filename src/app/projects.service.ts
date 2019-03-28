@@ -4,7 +4,6 @@ import {Task} from './Task';
 import {Project} from './Project';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
-import {Duration} from './Duration';
 import {TimeService} from './time.service';
 
 @Injectable({
@@ -15,6 +14,10 @@ export class ProjectsService {
   currentProjectId: number;
 
   constructor(private serverService: ServerService, private router: Router) {
+  }
+
+  static getTasksByPriority(tasks: Task[]) {
+    return tasks.sort((a, b) => a.priority - b.priority);
   }
 
   getProjects() {

@@ -1,10 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Task} from './Task';
+import {ProjectsService} from './projects.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimeService {
+
+  static dayHours = 12;
 
   constructor() {
   }
@@ -77,25 +80,29 @@ export class TimeService {
 
     for (let task of tasks) {
       if (TimeService.isInDay(day, task)) {
-        result.taskAmount++;
-        result.hours += TimeService.getDurationInHours(task.duration);
-
-        if (!TimeService.isAlreadyInProjects(task, result.tasks)) {
-          result.projects++;
-        }
         result.tasks.push(task);
       }
     }
-    console.log(result);
+    result.tasks = ProjectsService.getTasksByPriority(result.tasks);
+
+    let time = TimeService.dayHours;
+    for (const task of result.tasks) {
+      const taskDuration = TimeService.getDurationInHours(task.duration);
+
+      if (time >= taskDuration) {
+        time -= taskDuration;
+        result.taskAmount++;
+        result.hours += TimeService.getDurationInHours(task.duration);
+        task.isFitInDay = true;
+      } else {
+        task.isFitInDay = false;
+      }
+    }
+    result.projects = TimeService.getProjectsAmount(result.tasks);
     return result;
   }
 
-  private static isInDay(day: Date, task: Task) {
-    // TODO 1;
-    return true;
-  }
-
-  private static getDurationInHours(duration: string) {
+  static getDurationInHours(duration: string) {
     const num = +duration.split('/')[0];
     const t = duration.split('/')[1];
     if (t === 'm') {
@@ -109,12 +116,22 @@ export class TimeService {
     }
   }
 
-  private static isAlreadyInProjects(task: Task, tasks: Task[]) {
-    for (let t of tasks) {
-      if (task.projectId === t.projectId) {
-        return true;
-      }
+  private static isInDay(day: Date, task: Task) {
+    // TODO 1;
+    const taskStart = new Date(task.startDate);
+    if (taskStart <= day) {
+      return true;
     }
     return false;
+  }
+
+  private static getProjectsAmount(tasks: Task[]) {
+    const result = [];
+    for (let task of tasks) {
+      if (task.isFitInDay && result.findIndex(id => task.projectId === id) === -1) {
+        result.push(task.projectId);
+      }
+    }
+    return result.length;
   }
 }
