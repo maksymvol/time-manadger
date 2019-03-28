@@ -1,6 +1,7 @@
 <mat-card>
   <div class="header">
     {{day.toDateString()}}
+    <div class="horizontal-hr"><hr></div>
   </div>
 
   <div class="card-body">
@@ -12,6 +13,7 @@
   </div>
 
   <div class="tasks">
+    <div class="horizontal-hr-1">~Tasks~<hr></div>
     <div class="task-container" *ngFor="let task of dayInfo.tasks">
       <div *ngIf="task.isFitInDay">
         {{task.name}}
