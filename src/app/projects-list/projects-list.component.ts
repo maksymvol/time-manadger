@@ -21,7 +21,7 @@ export class ProjectsListComponent implements OnInit {
   }
 
   cardClicked(project: Project) {
-    this.projectsService.changeCurrentProject(project.id);
+    this.projectsService.changeCurrentProjectId(project.id);
     this.projectsService.navigateTo('/projects/' + project.name);
   }
 
@@ -32,7 +32,10 @@ export class ProjectsListComponent implements OnInit {
         return (prev.id > curr.id) ? prev : curr;
       }).id + 1;
     }
-    this.projectsService.addNewProject(id).subscribe(res => this.projects.push(res));
+    let project;
+    this.projectsService.addNewProject(id).subscribe(res => {project = res}, (e) => {},
+      () => this.projectsService.getProjects().subscribe(res => this.projects = res, (e) => {},
+        () => {this.goToProject(project, this.projects); }));
   }
 
   deleteProject(project: Project) {
@@ -41,5 +44,10 @@ export class ProjectsListComponent implements OnInit {
         this.projectsService.getProjects().subscribe(res => this.projects = res);
         this.projectsService.getTasks().subscribe(res => this.tasks = res);
       });
+  }
+
+  private goToProject(project: Project, projects: Project[]) {
+    const proj = ProjectsService.getProjectByName(project, projects);
+    this.cardClicked(proj);
   }
 }
