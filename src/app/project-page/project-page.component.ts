@@ -60,11 +60,9 @@ export class ProjectPageComponent implements OnInit {
 
   addNewTask() {
     let taskId;
-    this.projectsService.getNewTaskId().subscribe(res => taskId = res, (e) => {
-      },
-      () => {
-        this.projectsService.addNewTask(this.project.id, taskId).subscribe(res => this.tasks.push(res));
-      });
+    this.projectsService.getNewTaskId().subscribe(res => taskId = res, (e) => {},
+      () => this.projectsService.addNewTask(this.project.id, taskId).subscribe(res => this.tasks.push(res), (e) => {},
+        () => this.projectsService.getTasksInCurrentProject().subscribe(res => this.tasks = res)));
   }
 
   deleteTask(task: Task) {
