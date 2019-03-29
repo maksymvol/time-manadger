@@ -4,15 +4,15 @@
 }
 
 .checked {
-  background-color: #676ce7;
+  background-color: #8895e7;
 }
 
 .card:hover {
-  background-color: #f3e9dd;
+  background-color: #6d81e7;
 }
 
 .card:active {
-  background-color: #ede3d7;
+  background-color: #5d6de7;
 }
 
 .content {
