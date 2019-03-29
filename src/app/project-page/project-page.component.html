@@ -26,7 +26,7 @@
     </div>
     <div class="task-info">
       <app-task-card [task]="currentTask"></app-task-card>
-      <button class="save-btn" mat-raised-button color="primary" (click)="saveTaskChanges()">Save</button>
+      <button [disabled]="currentTask.id === -1" class="save-btn" mat-raised-button color="primary" (click)="saveTaskChanges()">Save</button>
     </div>
   </div>
 </mat-card>
