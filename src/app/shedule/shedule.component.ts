@@ -22,6 +22,9 @@ export class SheduleComponent implements OnInit {
   }
 
   getScheduleDays() {
+    if (this.skipEmptyDays) {
+      return TimeService.getDatesFromTo(this.currentDate, this.endDate).filter(day => !TimeService.isEmptyDay(day, this.tasks));
+    }
     return TimeService.getDatesFromTo(this.currentDate, this.endDate);
   }
 
