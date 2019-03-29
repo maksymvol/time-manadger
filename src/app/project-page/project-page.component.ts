@@ -61,4 +61,8 @@ export class ProjectPageComponent implements OnInit {
         this.projectsService.addNewTask(this.project.id, taskId).subscribe(res => this.tasks.push(res));
       });
   }
+
+  deleteTask(task: Task) {
+    this.projectsService.deleteTask(task).subscribe(res => this.tasks = this.tasks.filter(t => t.id !== res.id));
+  }
 }

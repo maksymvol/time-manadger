@@ -55,4 +55,8 @@ export class ServerService {
   getNewTaskId() {
     return this.http.get(this.ROOT_URL + '/tasks/generate-new-id');
   }
+
+  deleteTask(task: Task) {
+    return this.http.delete<Task>(this.ROOT_URL + '/tasks/' + task.id);
+  }
 }

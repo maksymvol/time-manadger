@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Task} from '../Task';
-import {TimeService} from '../time.service';
 
 @Component({
   selector: 'app-task',
@@ -11,6 +10,7 @@ export class TaskComponent implements OnInit {
 
   @Input() task: Task;
   @Input() currentTask: Task;
+  @Output() deleteTask = new EventEmitter();
 
   constructor() {
   }
@@ -20,5 +20,9 @@ export class TaskComponent implements OnInit {
 
   getDate() {
     return new Date(this.task.startDate).toDateString();
+  }
+
+  handleDeleteButton() {
+    this.deleteTask.emit(this.task);
   }
 }

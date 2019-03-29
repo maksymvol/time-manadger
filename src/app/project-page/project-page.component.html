@@ -22,7 +22,7 @@
 
   <div class="tasks-container">
     <div class="tasks">
-      <app-tasks [tasks]="tasks" (taskClicked)="taskClicked($event)" (newTaskClicked)="addNewTask()" [currentTask]="currentTask"></app-tasks>
+      <app-tasks [tasks]="tasks" (taskClicked)="taskClicked($event)" (newTaskClicked)="addNewTask()" (taskDelete)="deleteTask($event)" [currentTask]="currentTask"></app-tasks>
     </div>
     <div class="task-info">
       <app-task-card [task]="currentTask"></app-task-card>

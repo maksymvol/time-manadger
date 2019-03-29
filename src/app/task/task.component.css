@@ -1,5 +1,6 @@
 .card {
   margin-bottom: 5px;
+  display: flex;
 }
 
 .checked {
@@ -8,9 +9,18 @@
 
 .card:hover {
   background-color: #f3e9dd;
-  cursor: pointer;
 }
 
 .card:active {
   background-color: #ede3d7;
+}
+
+.content {
+  width: 90%;
+  cursor: pointer;
+}
+
+.delete-btn-container {
+  padding-top: 7%;
+  cursor: pointer;
 }

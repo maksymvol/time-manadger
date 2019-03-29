@@ -106,4 +106,8 @@ export class ProjectsService {
   getNewTaskId() {
     return this.serverService.getNewTaskId();
   }
+
+  deleteTask(task: Task) {
+    return this.serverService.deleteTask(task);
+  }
 }
