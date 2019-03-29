@@ -50,7 +50,12 @@ export class ProjectPageComponent implements OnInit {
       tags: ProjectsService.getTagsAsArray(this.taskInfoCard.getTags()),
     };
 
-    this.projectsService.saveTask(task).subscribe(res => this.currentTask = res);
+    const index = ProjectsService.getTaskIndex(task, this.tasks);
+
+    this.projectsService.saveTask(task).subscribe(res => {
+      this.currentTask = res;
+      this.tasks[index] = res;
+    });
   }
 
   addNewTask() {

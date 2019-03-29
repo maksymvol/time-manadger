@@ -29,6 +29,16 @@ export class ProjectsService {
     return result;
   }
 
+  static getTaskIndex(task, tasks: Task[]) {
+    for (let i = 0; i < tasks.length; i++) {
+      const t = tasks[i];
+      if (t.id === task.id) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   getProjects() {
     return this.serverService.getProjects();
   }
