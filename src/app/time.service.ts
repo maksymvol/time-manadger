@@ -9,6 +9,7 @@ import {Project} from './Project';
 export class TimeService {
 
   static dayHours = 12;
+  static tags = ['everyDay', 'workingDays', 'weekendDays', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
   constructor() {
   }
@@ -125,50 +126,50 @@ export class TimeService {
     let result = false;
 
     for (const tag of task.tags) {
-      if (tag.tag === 'everyDay') {
+      if (tag.tag === this.tags[0]) {
         return true;
       }
-      if (tag.tag === 'workingDays') {
+      if (tag.tag === this.tags[1]) {
         if (day.getDay() >= 1 && day.getDay() <= 5) {
           result = true;
         }
       }
-      if (tag.tag === 'weekendDays') {
+      if (tag.tag === this.tags[2]) {
         if (day.getDay() === 0 || day.getDay() === 6) {
           result = true;
         }
       }
-      if (tag.tag === 'monday') {
+      if (tag.tag === this.tags[3]) {
         if (day.getDay() === 1) {
           result = true;
         }
       }
-      if (tag.tag === 'tuesday') {
+      if (tag.tag === this.tags[4]) {
         if (day.getDay() === 2) {
           result = true;
         }
       }
-      if (tag.tag === 'wednesday') {
+      if (tag.tag === this.tags[5]) {
         if (day.getDay() === 3) {
           result = true;
         }
       }
-      if (tag.tag === 'thursday') {
+      if (tag.tag === this.tags[6]) {
         if (day.getDay() === 4) {
           result = true;
         }
       }
-      if (tag.tag === 'friday') {
+      if (tag.tag === this.tags[7]) {
         if (day.getDay() === 5) {
           result = true;
         }
       }
-      if (tag.tag === 'saturday') {
+      if (tag.tag === this.tags[8]) {
         if (day.getDay() === 6) {
           result = true;
         }
       }
-      if (tag.tag === 'sunday') {
+      if (tag.tag === this.tags[9]) {
         if (day.getDay() === 0) {
           result = true;
         }

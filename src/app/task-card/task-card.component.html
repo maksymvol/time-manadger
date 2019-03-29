@@ -19,5 +19,6 @@
   </mat-form-field>
 
   <app-input [placeholder]="'Duration'" [value]="task.duration" [isTextArea]="false" [clearButton]="false"></app-input>
-  <app-input [placeholder]="'Tags'" [value]="getTagsInitial()" [isTextArea]="false" [clearButton]="true"></app-input>
+  <app-input-tags #tagsInput [allTags]="getAllTags()" [tagsInput]="tags"></app-input-tags>
+  <!--<app-input [placeholder]="'Tags'" [value]="getTagsInitial()" [isTextArea]="false" [clearButton]="true"></app-input>-->
 </mat-card>

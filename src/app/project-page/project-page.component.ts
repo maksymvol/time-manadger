@@ -47,7 +47,7 @@ export class ProjectPageComponent implements OnInit {
       projectId: this.currentTask.projectId,
       duration: this.taskInfoCard.getTimeMeasure(),
       startDate: this.taskInfoCard.getStartDate(),
-      tags: ProjectsService.getTagsAsArray(this.taskInfoCard.getTags()),
+      tags: this.taskInfoCard.getTags(),
     };
 
     const index = ProjectsService.getTaskIndex(task, this.tasks);

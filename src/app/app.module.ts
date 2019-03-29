@@ -13,6 +13,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material';
 
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
@@ -20,7 +22,7 @@ import {MatIconRegistry} from '@angular/material';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ProjectsListComponent} from './projects-list/projects-list.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ServerService} from './server.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -36,6 +38,7 @@ import {TimePlanningPageComponent} from './time-planning-page/time-planning-page
 import {ScheduleCalendarCardComponent} from './schedule-calendar-card/schedule-calendar-card.component';
 import {SheduleComponent} from './shedule/shedule.component';
 import { ScheduleDayCardComponent } from './schedule-day-card/schedule-day-card.component';
+import { InputTagsComponent } from './input-tags/input-tags.component';
 
 @NgModule({
   declarations: [
@@ -51,13 +54,15 @@ import { ScheduleDayCardComponent } from './schedule-day-card/schedule-day-card.
     TimePlanningPageComponent,
     ScheduleCalendarCardComponent,
     SheduleComponent,
-    ScheduleDayCardComponent
+    ScheduleDayCardComponent,
+    InputTagsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
     BrowserAnimationsModule,
     MatExpansionModule,
@@ -71,7 +76,9 @@ import { ScheduleDayCardComponent } from './schedule-day-card/schedule-day-card.
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [
     ServerService,
