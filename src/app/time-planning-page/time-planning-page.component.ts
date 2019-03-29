@@ -11,7 +11,7 @@ export class TimePlanningPageComponent implements OnInit {
 
   tasks;
   projects;
-  currentDate: string;
+  startDate: string;
   endDate: string;
   displayMode = 'dayCards';
   skipEmptyDays = true;
@@ -25,7 +25,7 @@ export class TimePlanningPageComponent implements OnInit {
       () => {
         this.endDate = TimeService.getEndDate(this.tasks);
       });
-    this.currentDate = TimeService.getCurrentDate();
+    this.startDate = TimeService.getCurrentDate();
   }
 
   ngOnInit() {

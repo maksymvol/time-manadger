@@ -1,10 +1,11 @@
 <div class="container">
   <div class="calendar-container">
-    <app-shedule [tasks]="tasks" [projects]="projects" [endDate]="endDate" [currentDate]="currentDate" [displayMode]="displayMode" [skipEmptyDays]="skipEmptyDays"></app-shedule>
+    <app-shedule [tasks]="tasks" [projects]="projects" [endDate]="endDate" [currentDate]="startDate" [displayMode]="displayMode" [skipEmptyDays]="skipEmptyDays"></app-shedule>
   </div>
 
   <div class="filter-container">
     <div class="filter-container header">Filter settings</div>
+    <hr>
 
     <div class="filter-container filters">
       <div class="display-mode-select">
@@ -14,6 +15,18 @@
           <mat-option value="dayCards">Day cards</mat-option>
         </mat-select>
       </div>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Start date" [(ngModel)]="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="End date" [(ngModel)]="endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
 
       <mat-checkbox [(ngModel)]="skipEmptyDays">Skip 'empty' days</mat-checkbox>
     </div>

@@ -6,13 +6,28 @@
   width: 70vw;
 }
 
-.filter-container {
+hr {
+  border: 2px solid #8233e7;
+}
 
+.filter-container {
   width: 20vw;
+  padding-left: 0.5em;
 }
 
 .filter-container .header {
+  margin-bottom: 1em;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .filter-container .filters {
+  display: flex;
+  flex-direction: column;
+}
+
+.display-mode-select {
+  margin-bottom: 1em;
 }
