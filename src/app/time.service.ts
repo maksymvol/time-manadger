@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Task} from './Task';
 import {ProjectsService} from './projects.service';
+import {Project} from './Project';
 
 @Injectable({
   providedIn: 'root'
@@ -72,7 +73,7 @@ export class TimeService {
     return result;
   }
 
-  static getDayInfo(day: Date, tasks: Task[], skipEmptyDays: boolean) {
+  static getDayInfo(day: Date, tasks: Task[], projects: Project[]) {
     const result = {tasks: [], taskAmount: 0, projects: 0, hours: 0};
     if (!tasks) {
       return result;
@@ -83,7 +84,7 @@ export class TimeService {
         result.tasks.push(task);
       }
     }
-    result.tasks = ProjectsService.getTasksByPriority(result.tasks);
+    result.tasks = ProjectsService.getTasksByPriority(result.tasks, projects);
 
     let time = TimeService.dayHours;
     for (const task of result.tasks) {
@@ -121,19 +122,59 @@ export class TimeService {
     if (taskStart >= day) {
       return false;
     }
+    let result = false;
 
     for (const tag of task.tags) {
       if (tag.tag === 'everyDay') {
         return true;
       }
       if (tag.tag === 'workingDays') {
-        return day.getDay() >= 1 && day.getDay() <= 5;
+        if (day.getDay() >= 1 && day.getDay() <= 5) {
+          result = true;
+        }
       }
       if (tag.tag === 'weekendDays') {
-        return day.getDay() === 0 || day.getDay() === 6;
+        if (day.getDay() === 0 || day.getDay() === 6) {
+          result = true;
+        }
+      }
+      if (tag.tag === 'monday') {
+        if (day.getDay() === 1) {
+          result = true;
+        }
+      }
+      if (tag.tag === 'tuesday') {
+        if (day.getDay() === 2) {
+          result = true;
+        }
+      }
+      if (tag.tag === 'wednesday') {
+        if (day.getDay() === 3) {
+          result = true;
+        }
+      }
+      if (tag.tag === 'thursday') {
+        if (day.getDay() === 4) {
+          result = true;
+        }
+      }
+      if (tag.tag === 'friday') {
+        if (day.getDay() === 5) {
+          result = true;
+        }
+      }
+      if (tag.tag === 'saturday') {
+        if (day.getDay() === 6) {
+          result = true;
+        }
+      }
+      if (tag.tag === 'sunday') {
+        if (day.getDay() === 0) {
+          result = true;
+        }
       }
     }
-    return false;
+    return result;
   }
 
   private static getProjectsAmount(tasks: Task[]) {

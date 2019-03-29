@@ -34,7 +34,7 @@ export class SheduleComponent implements OnInit {
   }
 
   getDayInfo(day: Date) {
-    return TimeService.getDayInfo(day, this.tasks, this.skipEmptyDays);
+    return TimeService.getDayInfo(day, this.tasks, this.projects);
   }
 
   isEmptyDay(day: Date) {

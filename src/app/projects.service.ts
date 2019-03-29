@@ -16,8 +16,14 @@ export class ProjectsService {
   constructor(private serverService: ServerService, private router: Router) {
   }
 
-  static getTasksByPriority(tasks: Task[]) {
-    return tasks.sort((a, b) => a.priority - b.priority);
+  static getTasksByPriority(tasks: Task[], projects: Project[]) {
+    let priority = [];
+    for (const task of tasks) {
+      priority.push({task: task, priority: ProjectsService.getProjectById(task.projectId, projects).priority + '.' + task.priority});
+    }
+    priority = priority.sort((a, b) => a.priority - b.priority);
+
+    return priority.map(value => value.task);
   }
 
   static getTagsAsArray(tags: string) {
@@ -42,6 +48,15 @@ export class ProjectsService {
   static getProjectByName(project: Project, projects: Project[]) {
     for (const p of projects) {
       if (p.name === project.name) {
+        return p;
+      }
+    }
+    return null;
+  }
+
+  static getProjectById(projectId: number, projects: Project[]): Project {
+    for (const p of projects) {
+      if (p.id === projectId) {
         return p;
       }
     }
@@ -155,6 +170,7 @@ export class ProjectsService {
       const i = Math.floor(Math.random() * list.length);
       return list[i];
     }
+
     return randomEl(adjectives) + ' ' + randomEl(nouns);
   }
 }
