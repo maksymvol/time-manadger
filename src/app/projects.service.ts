@@ -85,11 +85,11 @@ export class ProjectsService {
   }
 
   getCurrentProject() {
-    return this.serverService.getProjectById(this.currentProjectId);
+    return this.serverService.getProjectById(this.router.url.split('/')[2].split(':')[1]);
   }
 
   getTasksInCurrentProject() {
-    return this.serverService.getTasksInCurrentProject(this.currentProjectId);
+    return this.serverService.getTasksInCurrentProject(this.router.url.split('/')[2].split(':')[1]);
   }
 
   addNewProject(id) {

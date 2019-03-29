@@ -22,7 +22,7 @@ export class ProjectsListComponent implements OnInit {
 
   cardClicked(project: Project) {
     this.projectsService.changeCurrentProjectId(project.id);
-    this.projectsService.navigateTo('/projects/' + project.name);
+    this.projectsService.navigateTo('/projects/' + project.name + ':' + project.id);
   }
 
   handleNewCardClicked() {

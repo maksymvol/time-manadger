@@ -7,7 +7,7 @@ import {TimePlanningPageComponent} from './time-planning-page/time-planning-page
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
   {path: 'projects', component: ProjectsListComponent},
-  {path: 'projects/:name', component: ProjectPageComponent},
+  {path: 'projects/:value', component: ProjectPageComponent},
   {path: 'planning', component: TimePlanningPageComponent},
   // {path: '**', component: PageNotFoundComponent},
 ];
