@@ -16,6 +16,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material';
 
+import {NotifierModule, NotifierOptions} from 'angular-notifier';
+
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
 
@@ -39,6 +41,47 @@ import {ScheduleCalendarCardComponent} from './schedule-calendar-card/schedule-c
 import {SheduleComponent} from './shedule/shedule.component';
 import { ScheduleDayCardComponent } from './schedule-day-card/schedule-day-card.component';
 import { InputTagsComponent } from './input-tags/input-tags.component';
+
+const notifierDefaultOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'left',
+      distance: 12
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 3000,
+    onClick: false,
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 3
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 
 @NgModule({
   declarations: [
@@ -78,7 +121,9 @@ import { InputTagsComponent } from './input-tags/input-tags.component';
     MatGridListModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+
+    NotifierModule.withConfig(notifierDefaultOptions)
   ],
   providers: [
     ServerService,

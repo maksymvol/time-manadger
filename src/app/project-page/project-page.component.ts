@@ -4,6 +4,7 @@ import {Task} from '../Task';
 import {ProjectsService} from '../projects.service';
 import {InputComponent} from '../input/input.component';
 import {TaskCardComponent} from '../task-card/task-card.component';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-project-page',
@@ -12,6 +13,7 @@ import {TaskCardComponent} from '../task-card/task-card.component';
 })
 export class ProjectPageComponent implements OnInit {
 
+  private readonly notifier: NotifierService;
   @ViewChildren(InputComponent) inputComponents: QueryList<InputComponent>;
   @ViewChild(TaskCardComponent) taskInfoCard;
   project: Project = {name: '', descriptions: '', id: -1, priority: 1};
@@ -19,7 +21,8 @@ export class ProjectPageComponent implements OnInit {
   priority = '1';
   currentTask = {name: '', priority: 0, id: -1, projectId: -1, startDate: '4/13/2019', tags: []};
 
-  constructor(private projectsService: ProjectsService) {
+  constructor(private projectsService: ProjectsService, notifierService: NotifierService) {
+    this.notifier = notifierService;
   }
 
   ngOnInit() {
@@ -29,7 +32,8 @@ export class ProjectPageComponent implements OnInit {
 
   saveProjectInfo() {
     this.projectsService.saveProjectInfo(this.inputComponents.first.value, this.inputComponents.last.value, +this.priority, this.project)
-      .subscribe(res => this.project = res);
+      .subscribe(res => this.project = res, (e) => {},
+        () => this.notify('success', 'changes saved'));
   }
 
   taskClicked(task: Task) {
@@ -52,7 +56,8 @@ export class ProjectPageComponent implements OnInit {
     this.projectsService.saveTask(task).subscribe(res => {
       this.currentTask = res;
       this.tasks[index] = res;
-    });
+    }, (e) => {},
+      () => this.notify('success', 'changes saved'));
   }
 
   addNewTask() {
@@ -64,5 +69,9 @@ export class ProjectPageComponent implements OnInit {
 
   deleteTask(task: Task) {
     this.projectsService.deleteTask(task).subscribe(res => this.tasks = this.tasks.filter(t => t.id !== res.id));
+  }
+
+  notify(type: string, message: string) {
+    this.notifier.notify( type, message);
   }
 }

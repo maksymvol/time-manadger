@@ -1,36 +1,11 @@
 {
   "projects": [
     {
+      "name": "Home",
+      "descriptions": "Daily routine tasks",
       "id": 1,
-      "name": "Tutorial",
-      "descriptions": "project 1 descriptions ...."
-    },
-    {
-      "id": 4,
-      "name": "project 2",
-      "descriptions": "text some text some text some text some text some text some text some text some text some text some text"
+      "priority": 2
     }
   ],
-  "tasks": [
-    {
-      "id": 0,
-      "name": "task 1",
-      "projectId": 1
-    },
-    {
-      "id": 1,
-      "name": "task 2",
-      "projectId": 1
-    },
-    {
-      "id": 4,
-      "name": "task 3",
-      "projectId": 4
-    },
-    {
-      "id": 6,
-      "name": "task 4",
-      "projectId": 4
-    }
-  ]
+  "tasks": []
 }

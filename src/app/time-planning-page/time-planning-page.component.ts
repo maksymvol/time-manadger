@@ -11,8 +11,8 @@ export class TimePlanningPageComponent implements OnInit {
 
   tasks;
   projects;
-  startDate: string;
-  endDate: string;
+  startDate;
+  endDate;
   displayMode = 'dayCards';
   skipEmptyDays = true;
 
